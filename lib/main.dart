@@ -36,34 +36,67 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _row(Colors.red, Colors.green),
-            _row(Colors.yellow, Colors.lightBlueAccent),
-            _row(Colors.black38, Colors.blueGrey),
-            _row(Colors.red, Colors.green),
+            _row(
+                "https://images.wallpaperscraft.com/image/building_facade_architecture_185424_1440x2560.jpg",
+                'https://images.wallpaperscraft.com/image/rocks_slope_snow_185436_1440x2560.jpg'),
+            _row(
+                'https://images.wallpaperscraft.com/image/road_mountains_distance_185416_1440x2560.jpg',
+                'https://images.wallpaperscraft.com/image/road_mountains_distance_185416_1440x2560.jpg'),
+            _row(
+                'https://images.wallpaperscraft.com/image/road_marking_bridge_123398_2560x1080.jpg',
+                'https://images.wallpaperscraft.com/image/road_route_bridge_marking_night_115144_2560x1080.jpg'),
+            _row(
+              'https://images.wallpaperscraft.com/image/road_marking_night_123080_2560x1080.jpg',
+              'https://images.wallpaperscraft.com/image/road_marking_night_123080_2560x1080.jpg',
+            ),
           ],
         ),
       ),
     );
   }
 
-  Container _container(Color color) {
+  Container _container(String url) {
     return Container(
-      color: color,
-      width: 200,
+      width: 500,
+      decoration: BoxDecoration(
+          color: Colors.black,
+          border: Border(
+            top: BorderSide(width: 2.0),
+            left: BorderSide(width: 1.0),
+            right: BorderSide(width: 1.0),
+            bottom: BorderSide(width: 2.0),
+          )),
       height: 200,
+      child: FadeInImage(
+        fit: BoxFit.fill,
+        image: NetworkImage(
+          url,
+        ),
+        placeholder: AssetImage('assets/images/loading.png'),
+      ),
     );
   }
 
-  Row _row(Color color1, Color color2) {
+  Row _row(String url1, String url2) {
     return Row(
       children: [
         Expanded(
-          child: _container(color1),
+          child: _container(url1),
         ),
         Expanded(
-          child: _container(color2),
+          child: _container(url2),
         ),
       ],
     );
   }
 }
+
+/*
+https://images.wallpaperscraft.com/image/rocks_slope_snow_185436_1440x2560.jpg
+https://images.wallpaperscraft.com/image/building_facade_architecture_185424_1440x2560.jpg
+https://images.wallpaperscraft.com/image/road_mountains_distance_185416_1440x2560.jpg
+https://images.wallpaperscraft.com/image/road_mountains_distance_185416_1440x2560.jpg
+https://images.wallpaperscraft.com/image/road_marking_bridge_123398_2560x1080.jpg
+https://images.wallpaperscraft.com/image/road_route_bridge_marking_night_115144_2560x1080.jpg
+https://images.wallpaperscraft.com/image/road_marking_night_123080_2560x1080.jpg
+*/
